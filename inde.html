@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tariff Survival & Thrival Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --text-color: #212529;
+            --card-bg: #ffffff;
+            --primary-color: #0056b3; /* Dependable Blue */
+            --accent-color: #fd7e14;  /* Motivating Orange */
+            --border-color: #dee2e6;
+            --shadow-color-light: rgba(0, 0, 0, 0.1);
+            --shadow-color-deep: rgba(0, 0, 0, 0.15);
+            --icon-fill: #495057;
+            --link-color: var(--primary-color);
+            --nav-bg: rgba(255, 255, 255, 0.95);
+            --nav-text: #343a40;
+            --nav-shadow: rgba(0,0,0,0.1);
+            --timeline-line: #ced4da;
+            --timeline-dot-bg: var(--card-bg);
+            --timeline-dot-border: var(--primary-color);
+            --button-bg: var(--primary-color);
+            --button-text: #ffffff;
+            --button-hover-bg: #00418a;
+            --success-color: #28a745; /* Resourceful Green */
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #1a1d24; /* Darker, slightly blueish gray */
+            --text-color: #e9ecef;
+            --card-bg: #2c303a;   /* Darker card */
+            --primary-color: #4dabf7; /* Lighter blue for dark mode */
+            --accent-color: #ff922b;  /* Brighter orange for dark mode */
+            --border-color: #495057;
+            --shadow-color-light: rgba(0, 0, 0, 0.2);
+            --shadow-color-deep: rgba(0, 0, 0, 0.3);
+            --icon-fill: #adb5bd;
+            --link-color: var(--primary-color);
+            --nav-bg: rgba(33, 37, 41, 0.95);
+            --nav-text: #f8f9fa;
+            --nav-shadow: rgba(0,0,0,0.3);
+            --timeline-line: #495057;
+            --timeline-dot-bg: var(--card-bg);
+            --timeline-dot-border: var(--primary-color);
+            --button-bg: var(--primary-color);
+            --button-text: #121212; /* Darker text on light blue buttons */
+            --button-hover-bg: #3691e0;
+            --success-color: #40c057;
+        }
+
+        /* SVG Icons Base Style */
+        .icon {
+            width: 1.1em; height: 1.1em;
+            vertical-align: -0.15em;
+            fill: var(--icon-fill);
+            margin-right: 0.4em;
+            transition: fill 0.3s ease;
+        }
+        .icon-lg { width: 1.5em; height: 1.5em; margin-right: 0.5em; }
+        .icon-sm { width: 0.8em; height: 0.8em; }
+        a .icon-sm { margin-left: 0.2em;}
+
+        /* General Body Styles */
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-size: 16px; /* Base font size */
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+            padding-top: 80px; /* Space for sticky nav */
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+        }
+        h1 { font-size: 2.8em; color: var(--primary-color); text-align: center; margin-top: 0; }
+        h2 { font-size: 2em; color: var(--primary-color); border-bottom: 2px solid var(--border-color); padding-bottom: 0.3em;}
+        h3 { font-size: 1.5em; color: var(--accent-color);}
+        h4 { font-size: 1.2em; color: var(--text-color); font-weight: 600;}
+
+        p { margin-bottom: 1em; }
+        a { color: var(--link-color); text-decoration: none; transition: color 0.2s ease; }
+        a:hover, a:focus-visible { color: var(--accent-color); text-decoration: underline; }
+
+        /* Accessibility */
+        *:focus-visible {
+            outline: 3px solid var(--accent-color);
+            outline-offset: 2px;
+            box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-color) 30%, transparent);
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.75em 1.5em;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1em;
+            text-align: center;
+            text-decoration: none;
+            color: var(--button-text);
+            background-color: var(--button-bg);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+            box-shadow: 0 2px 4px var(--shadow-color-light);
+        }
+        .btn:hover, .btn:focus-visible {
+            background-color: var(--button-hover-bg);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px var(--shadow-color-deep);
+            color: var(--button-text);
+            text-decoration: none;
+        }
+        .btn-accent {
+            background-color: var(--accent-color);
+            color: var(--bg-color); /* High contrast for orange */
+        }
+        [data-theme="dark"] .btn-accent { color: var(--text-color); }
+        .btn-accent:hover, .btn-accent:focus-visible {
+            background-color: color-mix(in srgb, var(--accent-color) 85%, black);
+        }
+
+        /* Sticky Navigation */
+        #sticky-nav {
+            position: sticky; top: 0; width: 100%;
+            background-color: var(--nav-bg);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px var(--nav-shadow);
+            z-index: 1000; padding: 0 10px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        #sticky-nav .nav-content {
+            max-width: 960px; margin: 0 auto; display: flex;
+            justify-content: space-between; align-items: center; height: 60px;
+        }
+        #sticky-nav .nav-logo {
+            font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.2em;
+            color: var(--nav-text); text-decoration: none; display: flex; align-items: center;
+        }
+        #sticky-nav .nav-logo .icon { fill: var(--primary-color); }
+        #sticky-nav ul { list-style: none; margin: 0; padding: 0; display: flex; }
+        #sticky-nav ul li a {
+            display: block; padding: 10px 12px; text-decoration: none; color: var(--nav-text);
+            font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.9em;
+            transition: color 0.2s ease, background-color 0.2s ease; border-radius: 4px;
+        }
+        #sticky-nav ul li a:hover, #sticky-nav ul li a:focus-visible, #sticky-nav ul li a.active {
+            color: var(--primary-color);
+            background-color: color-mix(in srgb, var(--primary-color) 10%, transparent);
+        }
+        #sticky-nav ul li a.active { font-weight: 700; }
+
+        .theme-toggle-button {
+            background: none; border: 1px solid var(--border-color); color: var(--nav-text);
+            padding: 8px; border-radius: 50%; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            width: 36px; height: 36px;
+            transition: background-color 0.2s, border-color 0.2s, transform 0.2s;
+        }
+        .theme-toggle-button:hover {
+            background-color: var(--border-color); transform: scale(1.1);
+        }
+        .theme-toggle-button .icon { fill: var(--nav-text); margin: 0; }
+
+        /* Hero Section */
+        .hero {
+            text-align: center; padding: 60px 20px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, color-mix(in srgb, var(--primary-color) 70%, var(--accent-color)) 100%);
+            color: white; border-radius: 0 0 30px 30px; margin-bottom: 40px;
+        }
+        .hero h1 { color: white; font-size: 3em; margin-bottom: 0.3em; }
+        .hero .subtitle { font-size: 1.3em; opacity: 0.9; margin-bottom: 1.5em; }
+
+        /* Content Sections */
+        .content-section {
+            background-color: var(--card-bg);
+            padding: 25px 30px; margin-bottom: 30px; border-radius: 12px;
+            box-shadow: 0 6px 12px var(--shadow-color-light);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0; transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out, background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .content-section.visible { opacity: 1; transform: translateY(0); }
+
+        /* Section 1: Understanding Tariffs */
+        .tariff-explanation { display: flex; gap: 20px; align-items: flex-start; }
+        .tariff-explanation > div { flex: 1; }
+        .tariff-explanation .icon-diagram {
+            width: 100px; height: auto; margin: 10px auto; display: block;
+            fill: var(--accent-color);
+        }
+
+        /* Section 2: History - Timeline */
+        .timeline { position: relative; padding: 20px 0; }
+        .timeline::before { /* The central line */
+            content: ''; position: absolute; left: 20px; top: 0; bottom: 0;
+            width: 4px; background-color: var(--timeline-line); border-radius: 2px;
+        }
+        .timeline-item { position: relative; margin-bottom: 30px; padding-left: 50px; }
+        .timeline-item::before { /* The dot on the line */
+            content: ''; position: absolute; left: 10px; top: 5px;
+            width: 20px; height: 20px; border-radius: 50%;
+            background-color: var(--timeline-dot-bg);
+            border: 4px solid var(--timeline-dot-border);
+            z-index: 1;
+            transition: transform 0.2s ease;
+        }
+        .timeline-item:hover::before { transform: scale(1.2); }
+        .timeline-content {
+            background-color: color-mix(in srgb, var(--bg-color) 80%, transparent);
+            padding: 15px; border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 5px var(--shadow-color-light);
+        }
+        .timeline-content h4 { margin-top: 0; color: var(--primary-color); }
+        .timeline-item.active .timeline-content { /* For JS-driven highlight (optional) */
+            border-left: 5px solid var(--accent-color);
+        }
+
+        /* Section 3: Household Effects (Pain Points) */
+        .pain-points-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .pain-point-card {
+            background-color: color-mix(in srgb, var(--accent-color) 5%, var(--card-bg));
+            padding: 20px; border-radius: 8px;
+            border-left: 5px solid var(--accent-color);
+            box-shadow: 0 4px 8px var(--shadow-color-light);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .pain-point-card:hover { transform: translateY(-5px); box-shadow: 0 6px 12px var(--shadow-color-deep); }
+        .pain-point-card h4 { color: var(--accent-color); display: flex; align-items: center; }
+        .pain-point-card .icon { fill: var(--accent-color); }
+
+        /* Section 4: Emotional Reality */
+        .emotional-reality-container { text-align: center; }
+        .emotional-quotes { margin-bottom: 20px; }
+        .emotional-quotes p {
+            font-style: italic; font-size: 1.1em;
+            opacity: 0; animation: fadeInQuote 0.8s forwards;
+            margin-bottom: 0.5em;
+        }
+        @keyframes fadeInQuote { to { opacity: 1; } }
+        /* Staggered animation for quotes */
+        .emotional-quotes p:nth-child(1) { animation-delay: 0.2s; }
+        .emotional-quotes p:nth-child(2) { animation-delay: 0.6s; }
+        .emotional-quotes p:nth-child(3) { animation-delay: 1.0s; }
+        .emotional-quotes p:nth-child(4) { animation-delay: 1.4s; }
+        .turn-anxiety-cta { font-weight: bold; color: var(--success-color); font-size: 1.2em; margin: 20px 0; }
+
+        /* Section 5: Thriving Strategies - Accordion */
+        .strategy-accordion .accordion-item {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden; /* For smooth collapse/expand */
+        }
+        .accordion-button {
+            width: 100%; background-color: color-mix(in srgb, var(--primary-color) 10%, var(--card-bg));
+            padding: 15px 20px; text-align: left; font-family: 'Montserrat', sans-serif;
+            font-size: 1.2em; font-weight: 600; color: var(--primary-color);
+            border: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+            transition: background-color 0.2s ease;
+        }
+        .accordion-button:hover, .accordion-button:focus-visible {
+            background-color: color-mix(in srgb, var(--primary-color) 20%, var(--card-bg));
+        }
+        .accordion-button .icon { transition: transform 0.3s ease; }
+        .accordion-button[aria-expanded="true"] .icon { transform: rotate(90deg); }
+        .accordion-content {
+            padding: 0 20px 20px 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+        }
+        .accordion-content ul { list-style: none; padding-left: 0; }
+        .accordion-content li {
+            padding: 8px 0 8px 25px; position: relative;
+            border-bottom: 1px dashed var(--border-color);
+        }
+        .accordion-content li:last-child { border-bottom: none; }
+        .accordion-content li::before {
+            content: '✔'; color: var(--success-color); position: absolute;
+            left: 0; top: 8px; font-weight: bold;
+        }
+
+        /* Section 6: Long-Term Gain */
+        .reframe-quote {
+            font-style: italic; font-size: 1.3em; text-align: center;
+            padding: 20px; margin: 20px auto; max-width: 80%;
+            background-color: color-mix(in srgb, var(--success-color) 10%, transparent);
+            border-left: 5px solid var(--success-color); border-radius: 8px;
+            color: var(--text-color);
+        }
+        .mindset-upgrades-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .mindset-card {
+            text-align: center; padding: 20px;
+            background-color: var(--bg-color); border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+        .mindset-card .icon-lg { fill: var(--success-color); display: block; margin: 0 auto 10px auto; }
+        .mindset-card h4 { color: var(--success-color); }
+
+        /* Section 7: Quick Wins and Tools (Table to Cards) */
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .tool-card {
+            background-color: var(--bg-color); padding: 20px; border-radius: 8px;
+            border: 1px solid var(--border-color);
+            display: flex; flex-direction: column;
+        }
+        .tool-card h4 { margin-top: 0; color: var(--primary-color); }
+        .tool-card p { flex-grow: 1; }
+        .tool-card a.btn { margin-top: auto; display: block; }
+
+        /* Footer */
+        footer {
+            text-align: center; padding: 30px 20px; margin-top: 40px;
+            border-top: 1px solid var(--border-color); font-size: 0.9em;
+        }
+        footer p { margin: 5px 0; }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2em; } .hero h1 { font-size: 2.5em; }
+            h2 { font-size: 1.8em; }
+            .hero .subtitle { font-size: 1.1em; }
+            .container { padding-top: 70px; } /* Adjust for potentially wrapped nav */
+            
+            #sticky-nav .nav-content { flex-wrap: wrap; height: auto; padding: 5px 0; }
+            #sticky-nav ul { width: 100%; justify-content: center; order: 1; margin-top: 5px;}
+            #sticky-nav .nav-logo { margin-bottom: 5px; width: calc(100% - 50px); }
+            .theme-toggle-button { position: absolute; top: 12px; right: 15px; }
+            
+            .tariff-explanation { flex-direction: column; }
+            .timeline::before { left: 10px; }
+            .timeline-item { padding-left: 35px; }
+            .timeline-item::before { left: 0px; }
+        }
+        @media (max-width: 480px) {
+            #sticky-nav ul li a { padding: 8px 6px; font-size: 0.8em; }
+            .btn { font-size: 0.9em; padding: 0.6em 1.2em; }
+        }
+
+    </style>
+</head>
+<body data-theme="light">
+
+    <!-- Inline SVG Icons Definition -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="icon-sun" viewBox="0 0 24 24"><path d="M12 17.5a5.5 5.5 0 100-11 5.5 5.5 0 000 11zm0 1.5a7 7 0 100-14 7 7 0 000 14zm0-16a1 1 0 011 1v1a1 1 0 11-2 0V4a1 1 0 011-1zm0 18a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zm-8-9a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm14 0a1 1 0 011-1h1a1 1 0 110 2h-1a1 1 0 01-1-1zM7.05 7.05a1 1 0 011.414-1.414l.707.707a1 1 0 01-1.414 1.414l-.707-.707zm9.9 9.9a1 1 0 011.414-1.414l.707.707a1 1 0 01-1.414 1.414l-.707-.707zM7.05 16.95a1 1 0 01-1.414 1.414l-.707-.707a1 1 0 011.414-1.414l.707.707zm9.9-9.9a1 1 0 01-1.414 1.414l-.707-.707a1 1 0 011.414-1.414l.707.707z"/></symbol>
+        <symbol id="icon-moon" viewBox="0 0 24 24"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></symbol>
+        <symbol id="icon-logo" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></symbol> <!-- Example logo -->
+        <symbol id="icon-info" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></symbol>
+        <symbol id="icon-history" viewBox="0 0 24 24"><path d="M13 3a9 9 0 00-9 9H1l3.89 3.89.07.14L9 12H6a7 7 0 017-7 7 7 0 017 7 7 7 0 01-7 7v2a9 9 0 009-9 9 9 0 00-9-9zm-1 5v5l4.25 2.52.77-1.28-3.52-2.09V8H12z"/></symbol>
+        <symbol id="icon-household" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8h5z"/></symbol>
+        <symbol id="icon-emotion" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/></symbol>
+        <symbol id="icon-strategy" viewBox="0 0 24 24"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zm1-12h-2v2h2V8zm0 3h-2v5h2v-5z"/></symbol> <!-- Placeholder for strategy -->
+        <symbol id="icon-lightbulb" viewBox="0 0 24 24"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z"/></symbol>
+        <symbol id="icon-tools" viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></symbol>
+        <symbol id="icon-community" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></symbol>
+        <symbol id="icon-arrow-right" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></symbol>
+        <symbol id="icon-external-link" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6m4-3h6v6m-11 5L21 3"></path></symbol>
+        <symbol id="icon-budget" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zm0 4v10h16V8H4zm6 2h4v2h-4v-2z"/></symbol>
+        <symbol id="icon-diy" viewBox="0 0 24 24"><path d="M13.283 3.604a1 1 0 00-1.03.07L3.75 9.71a1 1 0 00-.305.685l-.001.033V18a1 1 0 001 1h14a1 1 0 001-1v-7.572a1 1 0 00-.307-.686l-8.5-6.037a1 1 0 00-.252-.101zm-.891 1.468l7.501 5.305L12.215 16h-3.08l-2.66-3.613 5.417-3.83zm-7.31 6.407L12 6.175l4.717 3.336L12 14.03v2.855l-2.278-1.953-.001-.001-2.607-2.234-.001-.001-.001-.001c-.023-.02-.05-.036-.074-.056l-.006-.005c-.03-.024-.057-.05-.086-.078l-.003-.003c-.03-.028-.058-.058-.084-.09l-.003-.004c-.025-.03-.05-.062-.071-.096l-.003-.004c-.02-.034-.038-.068-.053-.104l-.002-.005c-.015-.037-.028-.074-.038-.113l-.001-.004c-.01-.04-.017-.079-.022-.12l-.001-.006a.981.981 0 01-.005-.134v-.005l.002-.03.003-.032.003-.03.004-.03.004-.028.005-.028.005-.027.006-.027.006-.025.007-.025.007-.024.008-.023.008-.022.009-.021.009-.02.01-.02.01-.018.011-.017.011-.017.012-.016.012-.015.013-.014.013-.014.014-.013.014-.012.015-.011.015-.011.016-.01.016-.009.017-.008.017-.008.018-.007.018-.006.019-.006.019-.005.02-.004.02-.004.021-.003.021-.002.022-.002.022-.001H5.082zm8.211 4.521H7.707L12 18.326l3.586-2.326z"/></symbol>
+        <symbol id="icon-skill" viewBox="0 0 24 24"><path d="M17.625 9.328L14.86 6.562l-1.765 1.766a2.5 2.5 0 01-3.536 0L7.8 6.562 5.036 9.328a2.5 2.5 0 000 3.536l1.765 1.765-1.765 1.766a2.5 2.5 0 000 3.536l2.765 2.765a2.5 2.5 0 003.536 0l1.765-1.766 1.766 1.766a2.5 2.5 0 003.536 0l2.765-2.765a2.5 2.5 0 000-3.536l-1.766-1.766 1.766-1.765a2.5 2.5 0 000-3.536zM12 14.25a2.25 2.25 0 110-4.5 2.25 2.25 0 010 4.5z"/></symbol>
+        <symbol id="icon-invest" viewBox="0 0 24 24"><path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 17.08l1.5 1.41zM3 3h18v2H3V3z"/></symbol>
+    </svg>
+
+    <nav id="sticky-nav" aria-label="Main navigation">
+        <div class="nav-content">
+            <a href="#top" class="nav-logo">
+                <svg class="icon icon-lg"><use xlink:href="#icon-logo"></use></svg>
+                Tariff Guide
+            </a>
+            <ul>
+                <li><a href="#understanding">Understanding</a></li>
+                <li><a href="#history">History</a></li>
+                <li><a href="#effects">Effects</a></li>
+                <li><a href="#strategies">Strategies</a></li>
+                <li><a href="#tools">Tools</a></li>
+            </ul>
+            <button id="theme-toggle" class="theme-toggle-button" aria-label="Toggle dark mode">
+                <svg class="icon icon-moon"><use xlink:href="#icon-moon"></use></svg>
+            </button>
+        </div>
+    </nav>
+
+    <header class="hero" id="top">
+        <h1>Tariff Survival & Thrival Guide</h1>
+        <p class="subtitle">Thriving Through Trade Turbulence: Your Roadmap to Navigating Economic Shifts.</p>
+        <a href="#understanding" class="btn btn-accent">Start Learning</a>
+    </header>
+
+    <main class="container">
+
+        <!-- Section 1: Understanding Tariffs -->
+        <section id="understanding" class="content-section" aria-labelledby="understanding-title">
+            <h2 id="understanding-title"><svg class="icon icon-lg"><use xlink:href="#icon-info"></use></svg>Understanding Tariffs Without the Jargon</h2>
+            <div class="tariff-explanation">
+                <div>
+                    <h3>What Are Tariffs?</h3>
+                    <p>Tariffs are essentially taxes or duties imposed by a government on goods imported from other countries. For instance, if the U.S. government places a 25% tariff on imported steel, any steel brought into the country from abroad will cost 25% more to the importer *before* it even reaches a U.S. factory or store.</p>
+                </div>
+                <div>
+                    <h3>Who Really Pays for Tariffs?</h3>
+                    <p>While often framed as a cost to foreign countries, the financial burden of tariffs typically falls on **U.S. importers**. These businesses then usually pass these increased costs on to consumers like you. This means higher prices for everyday items – from your morning coffee (if beans are tariffed) to new electronics, clothing, and even cars.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: A Quick History of Tariffs -->
+        <section id="history" class="content-section" aria-labelledby="history-title">
+            <h2 id="history-title"><svg class="icon icon-lg"><use xlink:href="#icon-history"></use></svg>A Quick History of Tariffs in America</h2>
+            <div class="timeline">
+                <div class="timeline-item" data-year="Pre-1900s">
+                    <div class="timeline-content">
+                        <h4>Pre-1900s: Main Income Source</h4>
+                        <p>Tariffs were the U.S. government’s primary source of revenue before the introduction of the federal income tax.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-year="1930s">
+                    <div class="timeline-content">
+                        <h4>1930s: Smoot-Hawley Tariff Act</h4>
+                        <p>This act dramatically raised tariffs on over 20,000 imported goods. Many economists believe it worsened the Great Depression by reducing international trade.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-year="Post-WWII">
+                    <div class="timeline-content">
+                        <h4>Post-WWII: Towards Freer Trade</h4>
+                        <p>The U.S. spearheaded global efforts to reduce tariffs through agreements like the General Agreement on Tariffs and Trade (GATT), later replaced by the World Trade Organization (WTO).</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-year="2018-2020">
+                    <div class="timeline-content">
+                        <h4>2018–2020: Trump Tariffs</h4>
+                        <p>Significant tariffs were imposed, particularly on goods from China (e.g., steel, aluminum, technology). The stated aim was to boost U.S. manufacturing, but it also led to increased consumer prices and retaliatory tariffs from other countries.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-year="2024-2025">
+                    <div class="timeline-content">
+                        <h4>2024–2025 Trends: Targeted Tariffs</h4>
+                        <p>Focus on new or renewed tariffs on specific sectors like Chinese electric vehicles, solar panels, and other strategic goods, often framed as protecting U.S. industry, national security, and supply chain resilience.</p>
+                    </div>
+                </div>
+            </div>
+            <p><strong>Conclusion:</strong> Tariffs are complex tools used for various political and economic reasons, including protecting domestic industries, national security, responding in trade disputes, or influencing international policies. Their impact is often debated and can be far-reaching.</p>
+        </section>
+
+        <!-- Section 3: How Tariffs Affect Your Household -->
+        <section id="effects" class="content-section" aria-labelledby="effects-title">
+            <h2 id="effects-title"><svg class="icon icon-lg"><use xlink:href="#icon-household"></use></svg>How Tariffs Affect Your Household</h2>
+            <h3>Pain Points You Might Experience:</h3>
+            <div class="pain-points-grid">
+                <div class="pain-point-card">
+                    <h4><svg class="icon"><use xlink:href="#icon-budget"></use></svg>Rising Prices</h4>
+                    <p>The most direct impact. Expect potential cost increases on imported electronics, appliances, vehicles, groceries, clothing, and tools.</p>
+                </div>
+                <div class="pain-point-card">
+                    <h4><svg class="icon"><use xlink:href="#icon-tools"></use></svg>Supply Chain Disruptions</h4>
+                    <p>Tariffs can cause delays and shortages of various items, from specific food ingredients to critical components for cars or medical devices.</p>
+                </div>
+                <div class="pain-point-card">
+                    <h4><svg class="icon"><use xlink:href="#icon-skill"></use></svg>Job Risks</h4>
+                    <p>Industries reliant on exports (like agriculture) may face retaliatory tariffs, impacting jobs. Conversely, protected industries might see job stability or growth.</p>
+                </div>
+                <div class="pain-point-card">
+                    <h4><svg class="icon"><use xlink:href="#icon-info"></use></svg>Uncertainty</h4>
+                    <p>Frequent changes in trade policy can make long-term family budgeting, investment planning, and business decisions more challenging.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: The Emotional Reality -->
+        <section id="emotions" class="content-section" aria-labelledby="emotions-title">
+            <h2 id="emotions-title"><svg class="icon icon-lg"><use xlink:href="#icon-emotion"></use></svg>The Emotional Reality of Tariffs</h2>
+            <div class="emotional-reality-container">
+                <p>It's normal to feel a range of emotions when faced with economic uncertainty:</p>
+                <div class="emotional-quotes">
+                    <p>"Will I be able to afford groceries this month?" (Fear)</p>
+                    <p>"Why are these decisions impacting my paycheck so much?" (Anger/Frustration)</p>
+                    <p>"Is this actually good for the country, or is it just hurting families like mine?" (Confusion)</p>
+                    <p>"It feels like there’s nothing I can do about it..." (Overwhelm)</p>
+                </div>
+                <p class="turn-anxiety-cta"><strong>But there IS. Knowledge and preparation can turn anxiety into action.</strong></p>
+                <a href="#strategies" class="btn">Discover Strategies</a>
+            </div>
+        </section>
+
+        <!-- Section 5: Thriving Through Tariffs – Real Strategies -->
+        <section id="strategies" class="content-section" aria-labelledby="strategies-title">
+            <h2 id="strategies-title"><svg class="icon icon-lg"><use xlink:href="#icon-lightbulb"></use></svg>Thriving Through Tariffs – Real Strategies</h2>
+            <div class="strategy-accordion">
+                <!-- A. Household Budgeting & Smart Purchasing -->
+                <div class="accordion-item">
+                    <button class="accordion-button" aria-expanded="false" aria-controls="strategy-a-content">
+                        <span><svg class="icon"><use xlink:href="#icon-budget"></use></svg>A. Household Budgeting & Smart Purchasing</span>
+                        <svg class="icon icon-arrow-right" viewbox="0 0 24 24"><use xlink:href="#icon-arrow-right"></use></svg>
+                    </button>
+                    <div id="strategy-a-content" class="accordion-content" role="region" aria-labelledby="strategy-a-content">
+                        <ul>
